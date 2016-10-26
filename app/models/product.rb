@@ -3,11 +3,11 @@ class Product < ActiveRecord::Base
 	validates :name, presence: true
 
 	def discount_amount
-		if self.price_vnd > 800000
+		if price_vnd > 800000
 			return 41
-		elsif self.price_vnd > 200000
+		elsif price_vnd > 200000
 			return 31
-		elsif self.price_vnd > 100000
+		elsif price_vnd > 100000
 			return 21
 		else
 			return 0
@@ -15,7 +15,11 @@ class Product < ActiveRecord::Base
 	end
 
 	def final_price
-		return (self.price_vnd / 10000).round * 10000
+		return (price_vnd / 10000).round * 10000
+	end
+
+	def on_sale?
+		return discount_amount > 0
 	end
 
 	private

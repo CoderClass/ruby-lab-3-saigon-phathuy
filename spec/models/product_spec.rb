@@ -1,24 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	pending "add some examples to (or delete) #{__FILE__}"
 end
 
 describe '.alphabetical' do
 	it "returns [] when there are no products" do
-	  expect(Product.alphabetical).to eq([])
+		expect(Product.alphabetical).to eq([])
 	end
 
 	it "returns [a] when there is only one product a" do
-	  a = Product.create!(name: 'a', description: 'description', image_path: '', price_vnd: 50, weight: 1)
-	  expect(Product.alphabetical).to eq([a])
+		a = Product.create!(name: 'a', description: 'description', image_path: '', price_vnd: 50, weight: 1)
+		expect(Product.alphabetical).to eq([a])
 	end
 
 	it "returns [a,b,c] after I create 3 products c, b, a" do
-	  c = Product.create!(name: 'c', description: 'description', image_path: '', price_vnd: 50, weight: 1)
-	  b = Product.create!(name: 'b', description: 'description', image_path: '', price_vnd: 50, weight: 1)
-	  a = Product.create!(name: 'a', description: 'description', image_path: '', price_vnd: 50, weight: 1)
-	  expect(Product.alphabetical).to eq([a,b,c])
+		c = Product.create!(name: 'c', description: 'description', image_path: '', price_vnd: 50, weight: 1)
+		b = Product.create!(name: 'b', description: 'description', image_path: '', price_vnd: 50, weight: 1)
+		a = Product.create!(name: 'a', description: 'description', image_path: '', price_vnd: 50, weight: 1)
+		expect(Product.alphabetical).to eq([a,b,c])
 	end
 end
 
@@ -106,3 +106,15 @@ describe 'Final price' do
 		expect(product.final_price).to eq 110000
 	end
 end	
+
+describe 'On sale' do
+	it 'on sale' do
+		product = FactoryGirl.create(:product, price_vnd: 110000)
+		expect(product.on_sale?).to eq true
+	end
+
+	it 'not on sale' do
+		product = FactoryGirl.create(:product, price_vnd: 10000)
+		expect(product.on_sale?).to eq false
+	end
+end

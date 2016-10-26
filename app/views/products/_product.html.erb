@@ -2,6 +2,9 @@
     <div class="thumbnail">
         <%= image_tag product.image_path %>
         <div class="caption">
+        <h4 class="pull-right"><%= product_discount_info product %></h4>
+        </div>
+        <div class="caption">
             <h4 class="pull-right"><%= product.price_vnd %></h4>
             <h4 class="product-name"><a href="#"><%= product.name %></a></h4>
             <p><%= product.description %></p>
