@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
+  gem 'guard-rspec', require: false
 end
 group :test do
   gem 'capybara', '~> 2.10', '>= 2.10.1'
@@ -39,4 +40,3 @@ group :test do
   gem 'selenium-webdriver'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
