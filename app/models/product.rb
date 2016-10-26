@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
 	end
 
 	def final_price
-		return (price_vnd / 10000).round * 10000
+		return (price_vnd * (100 - discount_amount) / 100 / 10000).round * 10000
 	end
 
 	def on_sale?
